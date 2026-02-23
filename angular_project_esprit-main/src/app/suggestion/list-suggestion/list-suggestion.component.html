@@ -1,0 +1,41 @@
+<div class="suggestions-bg">
+  <div class="container py-4">
+    <h2 class="mb-3 fw-bold">💡 Liste des Suggestions</h2>
+
+    <input type="text" class="form-control mb-4" placeholder="Rechercher une suggestion..." [(ngModel)]="searchTerm" />
+    <!-- Cards -->
+    <div class="row g-3">
+      <div class="col-md-3" *ngFor="let s of suggestions">
+        <ng-container *ngIf="s.title===searchTerm || searchTerm==null">
+        <div class="card suggestion-card h-100">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between mb-2">
+              <h5 class="card-title mb-0">{{ s.title }}</h5>
+              <small class="text-muted">{{ s.date | date:'shortDate' }}</small>
+            </div>
+            <p class="card-text text-muted small">{{ s.description }}</p>
+            <p class="mb-1"><strong>Catégorie:</strong> {{ s.category }}</p>
+            <p class="mb-2"><strong>Status:</strong> <span class="badge bg-secondary">{{ s.status }}</span></p>
+            <div class="mt-auto d-flex justify-content-between align-items-center">
+              <span class="badge bg-info">{{ s.nbLikes }} likes</span>
+             <div>
+                    <div>
+                <button class="btn btn-sm btn-danger" (click)="fav(s)" [hidden]="s.status == 'refusee'">ajouter au favories</button>
+              </div>
+                 <div>
+                <button class="btn btn-sm btn-primary" (click)="likes(s)"  [hidden]="s.status == 'refusee'">likes</button>
+                <button class="btn btn-sm btn-secondary">details</button>
+              </div>
+             </div>
+            </div>
+          </div>
+        </div>
+       </ng-container>
+      </div>
+    </div>
+
+    <div class="mt-4" *ngIf="suggestions.length === 0">
+      <div class="alert alert-light text-center">Aucune suggestion disponible.</div>
+    </div>
+ </div>
+

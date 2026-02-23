@@ -1,0 +1,16 @@
+/* Background for the suggestions area */
+.suggestions-bg {
+  background-color: #f5f6f8;
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+/* Card styling */
+.suggestion-card {
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 18px rgba(20, 20, 20, 0.06);
+}
+
+/* Small visual tweaks */
+.suggestion-card .card-text { color: #6c757d; }
+.alert-light { background-color: transparent; color: #6c757d; border: 1px dashed #e9ecef; }
